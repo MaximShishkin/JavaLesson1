@@ -1,0 +1,109 @@
+// Указываем имя пакета, если необходимо!
+// package game4;
+
+
+// Подключения необходимых библиотек
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+// Класс для подарка, падающего сверху
+class podar {
+	
+	public Image img; // Изображение подарка
+    public int x,y; // Положение подарка на игровом поле, в пикселях, x - отступ слева, y - отступ сверху
+    public Boolean act; // Переменная логического типа, показывающая активность подарка, есть он игровом поле или нет
+    Timer timerUpdate; // Таймер, отвечающий за движение подарка вниз
+    private int napr= 0;
+    public int g=0;
+    
+    // Конструктор класса
+    public podar(Image img)
+    {
+    	// Создание и настройка таймера, отвечающего за движение подарка вниз
+		timerUpdate = new Timer(500,new ActionListener() {				
+			public void actionPerformed(ActionEvent e) {
+	            vniz(); // Метод, осуществляющий движение подарка вниз
+		}
+	    });		
+    	this.img = img; // Передача изображения из круглых скобок Конструктора класса в переменную класса
+    	act=false; // Изначально делаем подарок неактивным, отсутствующим на игровом поле    	
+    }
+    
+    // Метод, выполняющий активизацию подарка на игровом поле, вывод его сверху игрового поля
+    public void start()
+    {
+    	timerUpdate.setDelay(30); // Установка временной задержки для таймера
+        timerUpdate.start(); // Запуск таймера
+        y = 0; // Отступ сверху в пикселях
+        x = (int)(Math.random()*700); // Отступ слева в пикселях, получаем случайным образом от 0 до 700
+        act = true; // 
+    }
+    
+    // Метод, осуществляющий движение подарка вниз 
+    public void vniz()
+    {
+    	if (napr==8) y-=6;
+        if (napr==2) y+=6;
+        if (napr==9) {y-=6;x+=6;}
+        if (napr==6) x+=6;
+        if (napr==3) {y+=6;x+=6;}
+        if (napr==1) {y+=6;x-=6;}
+        if (napr==4) x-=6;
+        if (napr==7) {y-=6;x-=6;}
+        if(y<=0)
+        {
+     	   napr=(int)(Math.random()*3+1);
+     	  return;
+        }
+       
+        if (g==0)
+        {if ((act==true)&&(y<=6)) // Если подарок активен на игровом поле
+       {
+    	   napr=2;
+    	   g=1;
+    	   return;
+    	   
+    	   //napr=(int)(Math.random()*3+7); // Увеличение отступа сверху на 6 пикселей
+       }}
+        else {
+       if ((y+img.getHeight(null))>=470) // Если подарок достиг нижней границы
+       {
+    	   //napr=8;
+    	   napr=(int)(Math.random()*3+7);
+    	   return;
+    	   //timerUpdate.stop(); // Остановка таймера
+       }
+       if(y<=0)
+       {
+    	   napr=(int)(Math.random()*3+1);
+    	  return;
+       }
+       if(y<=0)
+       {
+    	   napr=(int)(Math.random()*3+1);
+    	   return;
+       }
+       if(x<=0)
+       {
+    	   napr=((int)(Math.random()*3+1))*3;
+    	   return;
+       }
+       if(x>=670)
+       {
+    	   napr=(((int)(Math.random()*3+1))*3)-2;
+    	   return;
+       }}
+      
+       
+    }
+    
+    // Метод, выполянющий отрисовку подарка на игровом поле, если он активен
+    public void draw(Graphics gr)
+    {
+    	if (act==true)
+    	{
+    	   gr.drawImage(img,x,y,null); // Рисование изображения
+    	}    	
+    }
+}
