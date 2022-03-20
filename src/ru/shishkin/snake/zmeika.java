@@ -1,4 +1,4 @@
-package snake;
+package ru.shishkin.snake;
 import javax.swing.*;
 import java.awt.*;
 import javax.imageio.*;
@@ -37,10 +37,10 @@ class myPanel extends JPanel
 	
 	private class myKey implements KeyListener  
 	{
-		    // Метод, который срабатывает при нажатии
+		    // пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	   	    public void keyPressed(KeyEvent e)
 	   	    {
-	   	    	// Получение кода нажатой клавиши
+	   	    	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	   	    	int key_ = e.getKeyCode();
 	   	    	if(key_==KeyEvent.VK_LEFT) myGame.new_napr=0;	
 	   	    	if(key_==KeyEvent.VK_RIGHT) myGame.new_napr=2;
@@ -71,10 +71,10 @@ class myPanel extends JPanel
 		
 		tmDraw = new Timer(20,new ActionListener() {				
 			public void actionPerformed(ActionEvent e) {
-	           repaint(); // Запуск метода перерисовки поля (public void paintComponent(Graphics gr))
+	           repaint(); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (public void paintComponent(Graphics gr))
 			}
 		});		    
-	   tmDraw.start(); // Запуск таймера для перерисовки
+	   tmDraw.start(); // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
 	   tmUpdate = new Timer(100,new ActionListener() {				
 			public void actionPerformed(ActionEvent e) {

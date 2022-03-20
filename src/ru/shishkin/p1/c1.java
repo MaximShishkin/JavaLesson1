@@ -1,4 +1,4 @@
-package p1;
+package ru.shishkin.p1;
 
 import javax.swing.*;
 
